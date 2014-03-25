@@ -1,0 +1,73 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<% content_for :page_title do %>
+  <%= Spree.t(:invoice_settings) %>
+<% end %>
+
+<%= form_tag admin_invoice_settings_path, :method => :put do %>
+  <div id="preferences" data-hook>
+    <fieldset class="general no-border-top">
+      <div class="field">
+	<%= label_tag :print_invoice_next_number, Spree.t(:next_invoice_number) %><br>
+	<%= number_field_tag :print_invoice_next_number, Spree::PrintInvoice::Config[:print_invoice_next_number], :size => 8 %>
+      </div>
+      <div class="row">
+	<div class="alpha six columns">
+	  <fieldset class="render no-border-bottom">
+	    <legend align="center"><%= Spree.t(:render_settings) %></legend>
+
+	    <div class="field">
+	      <%= label_tag :invoice_font_face, Spree.t(:invoice_font_face) %><br>
+	      <%= select_tag :print_invoice_font_face, font_faces, :class => 'fullwidth select2' %>
+	    </div>
+
+	    <div class="field">
+	      <%= label_tag :print_invoice_logo_scale, Spree.t(:invoice_logo_scale) %><br>
+	      <%= number_field_tag :print_invoice_logo_scale, Spree::PrintInvoice::Config[:print_invoice_logo_scale], :in => 1...100 %>
+	    </div>
+	  </fieldset>
+	</div>
+
+	<div class="omega six columns">
+	  <fieldset class="barcode no-border-bottom">
+	    <legend align="center"><%= Spree.t(:barcode_settings) %></legend>
+
+	    <div class="field">
+	      <%= check_box_tag :print_invoice_barcode_enabled, :enabled, Spree::PrintInvoice::Config[:print_invoice_barcode_enabled] == true %>
+	      <%= label_tag :print_invoice_enable_barcode, Spree.t(:enable_barcode) %>
+	    </div>
+
+	    <div class="field">
+	      <%= label_tag :print_invoice_justification, Spree.t(:barcode_justification) %>
+	      <div class="choices">
+		<ul class="no-border-top">
+		  <li>
+                    <%= radio_button_tag :print_invoice_barcode_justification, "left", Spree::PrintInvoice::Config[:print_invoice_barcode_justification] == "left" %>
+                    <%= label_tag :barcode_left_justification, Spree.t(:barcode_left_justification) %>
+		  </li>
+		  <li>
+                    <%= radio_button_tag :print_invoice_barcode_justification, "center", Spree::PrintInvoice::Config[:print_invoice_barcode_justification] == "center" %>
+                    <%= label_tag :barcode_center_justification, Spree.t(:barcode_center_justification) %>
+		  </li>
+		  <li>
+		    <%= radio_button_tag :print_invoice_barcode_justification, "right", Spree::PrintInvoice::Config[:print_invoice_barcode_justification] == "right" %>
+		    <%= label_tag :barcode_right_justification, Spree.t(:barcode_right_justification) %>
+		  </li>
+		</ul>
+	      </div>
+	    </div>
+
+	    <div class="field">
+	      <%= label_tag :print_invoice_vertical_offset, Spree.t(:barcode_vertical_offset) %><br>
+	      <%= number_field_tag :print_invoice_barcode_vertical_offset, Spree::PrintInvoice::Config[:print_invoice_barcode_vertical_offset] %>
+	    </div>
+	  </fieldset>
+	</div>
+      </div>
+
+      <div class="form-buttons filter-actions actions" data-hook="buttons">
+	<%= button Spree.t('actions.update'), 'icon-refresh' %>
+      </div>
+    </fieldset>
+  </div>
+<% end %>

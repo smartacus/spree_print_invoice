@@ -2,6 +2,15 @@
 
 en:
   spree:
+    invoice_settings: Invoice Settings
+    invoice_font_face: Font Face
+    invoice_logo_scale: Logo Scale
+    barcode_justification: Justification
+    barcode_left_justification: Left
+    barcode_center_justification: Center
+    barcode_right_justification: Right
+    barcode_vertical_offset: Vertical Offset
+
     customer_invoice: Customer Invoice
     footer_left: "Return in Other info"
     footer_left2: " 14 days or never"
@@ -14,9 +23,6 @@ en:
     invoice_print: Print Invoice
     packaging_slip_print: Print Slip
     packaging_slip: Packaging Slip
-
-    invoice_font_face: Invoice Font Face
-    invoice_logo_scale: Invoice Logo Scale
 
     invoice_number: Invoice Number
     invoice_date: Invoice issued on
